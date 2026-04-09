@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="smart-home-organizer">Smart Home Organizer</h1>
+<p>A web and mobile application for families to track and manage daily activities, organize grocery lists, and stay synchronized across devices.</p>
+<h2 id="%F0%9F%8E%AF-project-goals">🎯 Project Goals</h2>
+<p><strong>Smart Home Organizer</strong> helps busy families keep track of their kids' daily lives in one place:</p>
+<ul>
+<li>📋 <strong>Activity Logging</strong>: Log food intake, moods, playdates, and sleep schedules for each child</li>
+<li>📅 <strong>Calendar Sync</strong>: Automatic synchronization with Google Calendar for family events</li>
+<li>🛒 <strong>Grocery Management</strong>: Organize multi-store shopping lists efficiently</li>
+<li>🔔 <strong>Smart Reminders</strong>: Daily reminders for activities, meals, and appointments</li>
+<li>💬 <strong>Multi-Channel Input</strong>: Accept information via WhatsApp, email, and web interface</li>
+<li>🤖 <strong>AI-Powered</strong>: Voice transcription and intelligent message parsing (local LLM)</li>
+<li>🔐 <strong>Security First</strong>: End-to-end encryption and secure authentication from day one</li>
+</ul>
+<p><strong>Users</strong>: Parents, caregivers, and nannies managing family routines.</p>
+<hr>
+<h2 id="%F0%9F%9A%80-getting-started">🚀 Getting Started</h2>
+<h3 id="for-sprint-1-frontend-prototype">For Sprint 1: Frontend Prototype</h3>
+<p>Start here to see what we're building:</p>
+<p>👉 <strong><a href="./PROTOTYPE_GUIDE.md">PROTOTYPE_GUIDE.md</a></strong> — Interactive web prototype walkthrough</p>
+<pre class="hljs"><code><div><span class="hljs-built_in">cd</span> frontend
+npm run dev
+<span class="hljs-comment"># Open http://localhost:3000</span>
+</div></code></pre>
+<p><strong>Demo Credentials:</strong></p>
+<ul>
+<li>Email: <code>demo@example.com</code></li>
+<li>Password: <code>password123</code></li>
+</ul>
+<hr>
+<h2 id="%F0%9F%93%A6-project-structure">📦 Project Structure</h2>
+<pre class="hljs"><code><div>smart-home-organizer/
+├── README.md                    # This file
+├── CLAUDE.md                    # Development guidelines &amp; tech stack
+├── PROTOTYPE_GUIDE.md           # Sprint 1 frontend prototype
+├── frontend/                    # React/Next.js web app (Sprint 1)
+│   ├── app/
+│   │   ├── login/              # Login page
+│   │   ├── dashboard/          # Main dashboard
+│   │   └── lib/mockData.ts     # Mock data for prototype
+│   └── README.md
+├── backend/                     # FastAPI server (Coming Sprint 2)
+├── mobile/                      # React Native app (Future)
+├── docker-compose.yml           # Local development setup (Coming)
+└── .env.example                 # Environment template (Coming)
+</div></code></pre>
+<hr>
+<h2 id="%F0%9F%93%9A-documentation">📚 Documentation</h2>
+<table>
+<thead>
+<tr>
+<th>Document</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><a href="./CLAUDE.md">CLAUDE.md</a></strong></td>
+<td>Development setup, architecture, tech stack, common commands</td>
+</tr>
+<tr>
+<td><strong><a href="./PROTOTYPE_GUIDE.md">PROTOTYPE_GUIDE.md</a></strong></td>
+<td>Interactive frontend prototype guide for Sprint 1</td>
+</tr>
+<tr>
+<td><strong><a href="./frontend/README.md">frontend/README.md</a></strong></td>
+<td>Frontend-specific technical documentation</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="%F0%9F%9B%A0-tech-stack">🛠 Tech Stack</h2>
+<h3 id="frontend-sprint-1---in-progress">Frontend (Sprint 1 - In Progress)</h3>
+<ul>
+<li><strong>Framework</strong>: Next.js 16+ (React)</li>
+<li><strong>Styling</strong>: Tailwind CSS</li>
+<li><strong>Language</strong>: TypeScript</li>
+<li><strong>State</strong>: React Hooks</li>
+</ul>
+<h3 id="backend-sprint-2---planning">Backend (Sprint 2 - Planning)</h3>
+<ul>
+<li><strong>Framework</strong>: Python FastAPI</li>
+<li><strong>Database</strong>: PostgreSQL 16</li>
+<li><strong>Cache/Queue</strong>: Redis</li>
+<li><strong>AI/ML</strong>: OpenAI Whisper (transcription), Local LLM (parsing)</li>
+</ul>
+<h3 id="deployment">Deployment</h3>
+<ul>
+<li><strong>Docker Compose</strong> for local development &amp; production</li>
+<li><strong>Nginx</strong> reverse proxy with SSL/HTTPS</li>
+<li><strong>PostgreSQL</strong> on Ubuntu host with automated backups</li>
+</ul>
+<hr>
+<h2 id="%F0%9F%91%A5-team">👥 Team</h2>
+<ul>
+<li><strong>2 Engineers</strong> (Backend + Frontend)</li>
+<li><strong>1 PM</strong> (Non-technical, focuses on product direction)</li>
+</ul>
+<h3 id="working-philosophy">Working Philosophy</h3>
+<ul>
+<li>⚡ <strong>Speed &amp; pragmatism</strong> over perfection</li>
+<li>🔙 <strong>Backend-first</strong> — Keep frontend thin, logic in APIs</li>
+<li>🔒 <strong>Security first</strong> — Auth &amp; encryption from day one</li>
+<li>🎨 <strong>Simple UX</strong> — Intuitive, no hidden workflows</li>
+</ul>
+<hr>
+<h2 id="%F0%9F%8E%AF-sprint-roadmap">🎯 Sprint Roadmap</h2>
+<h3 id="%E2%9C%85-sprint-1-frontend-prototype-current">✅ Sprint 1: Frontend Prototype (Current)</h3>
+<ul>
+<li><input type="checkbox" id="checkbox0" checked="true"><label for="checkbox0">Login page with authentication form</label></li>
+<li><input type="checkbox" id="checkbox1" checked="true"><label for="checkbox1">Dashboard with activity logging</label></li>
+<li><input type="checkbox" id="checkbox2" checked="true"><label for="checkbox2">Today's activities and reminders view</label></li>
+<li><input type="checkbox" id="checkbox3" checked="true"><label for="checkbox3">Interactive activity logging modal</label></li>
+<li><input type="checkbox" id="checkbox4" checked="true"><label for="checkbox4">Responsive design (mobile, tablet, desktop)</label></li>
+<li><input type="checkbox" id="checkbox5" checked="true"><label for="checkbox5">Mock data integration</label></li>
+</ul>
+<h3 id="%F0%9F%94%84-sprint-2-backend--api-planning">🔄 Sprint 2: Backend &amp; API (Planning)</h3>
+<ul>
+<li><input type="checkbox" id="checkbox6"><label for="checkbox6">FastAPI setup with PostgreSQL</label></li>
+<li><input type="checkbox" id="checkbox7"><label for="checkbox7">User authentication endpoints</label></li>
+<li><input type="checkbox" id="checkbox8"><label for="checkbox8">Activity logging endpoints</label></li>
+<li><input type="checkbox" id="checkbox9"><label for="checkbox9">Calendar sync with Google Calendar API</label></li>
+<li><input type="checkbox" id="checkbox10"><label for="checkbox10">Task queue with Redis</label></li>
+<li><input type="checkbox" id="checkbox11"><label for="checkbox11">Integration with WhatsApp Bridge</label></li>
+</ul>
+<h3 id="%F0%9F%9A%80-sprint-3-advanced-features">🚀 Sprint 3+: Advanced Features</h3>
+<ul>
+<li><input type="checkbox" id="checkbox12"><label for="checkbox12">Voice transcription (Whisper)</label></li>
+<li><input type="checkbox" id="checkbox13"><label for="checkbox13">AI-powered message parsing</label></li>
+<li><input type="checkbox" id="checkbox14"><label for="checkbox14">Grocery list management</label></li>
+<li><input type="checkbox" id="checkbox15"><label for="checkbox15">Mobile app (React Native)</label></li>
+<li><input type="checkbox" id="checkbox16"><label for="checkbox16">Push notifications &amp; reminders</label></li>
+<li><input type="checkbox" id="checkbox17"><label for="checkbox17">Google Keep integration</label></li>
+</ul>
+<hr>
+<h2 id="%F0%9F%8F%83-quick-start">🏃 Quick Start</h2>
+<h3 id="prerequisites">Prerequisites</h3>
+<ul>
+<li>Node.js 18+ (for frontend)</li>
+<li>Python 3.11+ (for backend - coming soon)</li>
+<li>PostgreSQL 16 (for backend - coming soon)</li>
+<li>Docker &amp; Docker Compose (optional, for full stack)</li>
+</ul>
+<h3 id="run-frontend-prototype-now">Run Frontend Prototype Now</h3>
+<pre class="hljs"><code><div><span class="hljs-built_in">cd</span> frontend
+npm install  <span class="hljs-comment"># (Already done during setup)</span>
+npm run dev
+</div></code></pre>
+<p>Open <strong>http://localhost:3000</strong> and login with demo credentials.</p>
+<h3 id="view-development-guidelines">View Development Guidelines</h3>
+<pre class="hljs"><code><div><span class="hljs-comment"># Read setup, commands, architecture, security checklist</span>
+cat CLAUDE.md
+</div></code></pre>
+<hr>
+<h2 id="%E2%9C%A8-key-features-end-goal">✨ Key Features (End Goal)</h2>
+<h3 id="activity-logging">Activity Logging</h3>
+<ul>
+<li>Log food, moods, play, sleep for each child</li>
+<li>Timestamps and activity types with emoji icons</li>
+<li>Edit and delete capabilities</li>
+</ul>
+<h3 id="smart-reminders">Smart Reminders</h3>
+<ul>
+<li>Daily recurring reminders (meals, activities)</li>
+<li>One-time event reminders</li>
+<li>Email, SMS, and push notifications</li>
+</ul>
+<h3 id="calendar-integration">Calendar Integration</h3>
+<ul>
+<li>Sync family events from Google Calendar</li>
+<li>Create events from within app</li>
+<li>Parse calendar invites from email</li>
+</ul>
+<h3 id="grocery-management">Grocery Management</h3>
+<ul>
+<li>Multi-store shopping lists</li>
+<li>Cross-family collaboration</li>
+<li>Cost tracking (future)</li>
+</ul>
+<h3 id="multi-channel-input">Multi-Channel Input</h3>
+<ul>
+<li>WhatsApp voice and text messages</li>
+<li>Email forwarding and parsing</li>
+<li>Web interface</li>
+<li>Voice transcription with local Whisper</li>
+</ul>
+<h3 id="security--privacy">Security &amp; Privacy</h3>
+<ul>
+<li>Password-based authentication</li>
+<li>Data encryption at rest and in transit</li>
+<li>HTTPS-only communication</li>
+<li>No storing secrets in code</li>
+</ul>
+<hr>
+<h2 id="%F0%9F%94%90-security-first">🔐 Security First</h2>
+<p>Before any feature ships, we verify:</p>
+<ul>
+<li>✅ Passwords hashed (bcrypt or similar)</li>
+<li>✅ HTTPS only (no HTTP)</li>
+<li>✅ SQL injection prevention (ORM)</li>
+<li>✅ CORS properly configured</li>
+<li>✅ Secrets in environment variables</li>
+<li>✅ API rate limiting</li>
+<li>✅ Input validation on all endpoints</li>
+<li>✅ Database backups automated</li>
+</ul>
+<hr>
+<h2 id="%F0%9F%93%96-how-to-contribute">📖 How to Contribute</h2>
+<ol>
+<li><strong>Review current work</strong>: Check <a href="./PROTOTYPE_GUIDE.md">PROTOTYPE_GUIDE.md</a></li>
+<li><strong>Read development guide</strong>: See <a href="./CLAUDE.md">CLAUDE.md</a> for setup &amp; commands</li>
+<li><strong>Run the prototype</strong>: <code>cd frontend &amp;&amp; npm run dev</code></li>
+<li><strong>Send feedback</strong>: Comment on features, UX, and next priorities</li>
+</ol>
+<hr>
+<h2 id="%F0%9F%93%9E-questions">📞 Questions?</h2>
+<ul>
+<li>🏗️ <strong>Architecture questions?</strong> → See <a href="./CLAUDE.md">CLAUDE.md</a></li>
+<li>🎨 <strong>Frontend prototype questions?</strong> → See <a href="./PROTOTYPE_GUIDE.md">PROTOTYPE_GUIDE.md</a></li>
+<li>💻 <strong>Tech stack details?</strong> → See <a href="./CLAUDE.md">CLAUDE.md</a></li>
+</ul>
+<hr>
+<h2 id="%F0%9F%93%85-status">📅 Status</h2>
+<ul>
+<li><strong>Project</strong>: Early stage, ready to build</li>
+<li><strong>Sprint 1</strong>: Frontend prototype ✅ Complete</li>
+<li><strong>Next</strong>: Backend API development</li>
+<li><strong>Last Updated</strong>: 2026-04-05</li>
+</ul>
+
+</body>
+</html>
